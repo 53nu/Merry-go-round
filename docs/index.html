@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#100e18">
+  <meta name="description" content="눈을 감으면 깨어나는 작은 회전목마.">
+  <title>Midnight Merry-go-round</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./vendor/p5.min.js" defer></script>
+  <script src="./scene.js" defer></script>
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <main id="stage" aria-label="눈을 감으면 빛과 음악이 켜지는 3D 회전목마"></main>
+  <div class="vignette" aria-hidden="true"></div>
+  <button id="sound" class="icon-button sound" aria-label="음악 끄기" aria-pressed="false" title="음악 끄기">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><g class="sound-waves"><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></g><path class="sound-slash" d="m16 9 5 6m0-6-5 6"/></svg>
+  </button>
+  <section id="camera-panel" class="camera-panel" aria-label="카메라와 얼굴 추적 메쉬">
+    <video id="camera" autoplay muted playsinline aria-label="카메라 미리보기"></video>
+    <canvas id="mesh" width="480" height="360" aria-hidden="true"></canvas>
+    <span id="tracking-dot" class="tracking-dot" aria-hidden="true"></span>
+    <svg class="camera-corner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="m8 6 1.5-2h5L16 6h4v14H4V6Z"/><circle cx="12" cy="13" r="4"/></svg>
+    <button id="start" aria-label="카메라와 음악 시작" title="카메라와 음악 시작">
+      <svg class="start-camera" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 8 13 5h6l2 3h5a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2Z"/><circle cx="16" cy="17" r="6"/><path d="M24 12h.01"/></svg>
+      <svg class="retry-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 8a8 8 0 1 0 0 8M20 3v5h-5"/></svg>
+      <span class="spinner" aria-hidden="true"></span>
+    </button>
+    <button id="stop" class="stop-camera" aria-label="카메라 끄기" title="카메라 끄기"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><path d="m6 6 8 8m0-8-8 8"/></svg></button>
+    <p id="camera-error" role="status"></p>
+  </section>
+  <div id="status" class="sr-only" role="status" aria-live="polite"></div>
+</body>
+</html>
